@@ -1,11 +1,12 @@
 
 <!DOCTYPE html>
+
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Caja Chica RCI</title>
-  <style>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Caja Chica RCI</title>
+<style>
     body {
       font-family: Arial, sans-serif;
       margin: 20px;
@@ -87,72 +88,56 @@
       font-weight: bold;
     }
   </style>
-</head>
+<meta content="#1f2937" name="theme-color"/><link href="manifest.json" rel="manifest"/></head>
 <body>
-
 <h1>Caja Chica RCI</h1>
-
 <div class="container">
-  <label>Responsable:</label>
-  <input type="text" id="responsable" value="Clara Salazar">
-
-  <label>Fecha:</label>
-  <input type="date" id="fecha">
-
-  <label>No. de contrato (4 dígitos numéricos):</label>
-  <input type="text" id="contrato" maxlength="4" pattern="\d*">
-
-  <label>Lugar de trabajo:</label>
-  <input type="text" id="lugar">
-
-  <label>¿Qué se compró?</label>
-  <input type="text" id="compra">
-
-  <label>Tipo:</label>
-  <label><input type="checkbox" id="esIngreso"> Es ingreso</label>
-
-  <label>Total ($):</label>
-  <input type="number" id="monto" step="0.01">
-
-  <label>Comentarios:</label>
-  <textarea id="comentarios" rows="2"></textarea>
-
-  <label>Foto:</label>
-  <input type="file" id="foto" accept="image/*">
-
-  <button onclick="agregarRegistro()">Agregar</button>
-
-  <div class="fechas">
-    <div>
-      <label>Desde:</label>
-      <input type="date" id="fechaDesde">
-    </div>
-    <div>
-      <label>Hasta:</label>
-      <input type="date" id="fechaHasta">
-    </div>
-  </div>
-
-  <button onclick="exportarPDF()">Exportar a PDF</button>
-
-  <table id="tablaRegistros">
-    <thead>
-      <tr>
-        <th>Fecha</th>
-        <th>Contrato</th>
-        <th>Lugar</th>
-        <th>Compra</th>
-        <th>Tipo</th>
-        <th>Comentarios</th>
-        <th>Monto</th><th>Acción</th>
-      </tr>
-    </thead>
-    <tbody></tbody>
-  </table>
-
-  <div id="totalFinal">Total: $0.00</div>
+<label>Responsable:</label>
+<input id="responsable" type="text" value="Clara Salazar"/>
+<label>Fecha:</label>
+<input id="fecha" type="date"/>
+<label>No. de contrato (4 dígitos numéricos):</label>
+<input id="contrato" maxlength="4" pattern="\d*" type="text"/>
+<label>Lugar de trabajo:</label>
+<input id="lugar" type="text"/>
+<label>¿Qué se compró?</label>
+<input id="compra" type="text"/>
+<label>Tipo:</label>
+<label><input id="esIngreso" type="checkbox"/> Es ingreso</label>
+<label>Total ($):</label>
+<input id="monto" step="0.01" type="number"/>
+<label>Comentarios:</label>
+<textarea id="comentarios" rows="2"></textarea>
+<label>Foto:</label>
+<input accept="image/*" id="foto" type="file"/>
+<button onclick="agregarRegistro()">Agregar</button>
+<div class="fechas">
+<div>
+<label>Desde:</label>
+<input id="fechaDesde" type="date"/>
 </div>
-
+<div>
+<label>Hasta:</label>
+<input id="fechaHasta" type="date"/>
+</div>
+</div>
+<button onclick="exportarPDF()">Exportar a PDF</button>
+<table id="tablaRegistros">
+<thead>
+<tr>
+<th>Fecha</th>
+<th>Contrato</th>
+<th>Lugar</th>
+<th>Compra</th>
+<th>Tipo</th>
+<th>Comentarios</th>
+<th>Monto</th><th>Acción</th>
+</tr>
+</thead>
+<tbody></tbody>
+</table>
+<div id="totalFinal">Total: $0.00</div>
+</div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.25/jspdf.plugin.autotable.min.js"></script>
 <script>
@@ -297,6 +282,11 @@
     addImages();
   }
 </script>
-
-</body>
+<script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', function() {
+    navigator.serviceWorker.register('sw.js');
+  });
+}
+</script></body>
 </html>
